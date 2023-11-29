@@ -1,0 +1,37 @@
+﻿@model GroceryProject.Models.Food
+@{
+    ViewData["Title"] = "AddFood";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Add Food</h2>
+<br />
+
+<form class="form-group" asp-action="AddFood" asp-controller="Food" method="post" enctype="multipart/form-data">
+    @Html.LabelFor(x => x.FoodName, "Food Name")
+    @Html.TextBoxFor(x => x.FoodName, new { @class = "form-control" })
+    <span asp-validation-for="FoodName" class="text-danger"></span>
+    <br />
+    @Html.LabelFor(x => x.FoodDescription, "Food Description")
+    @Html.TextAreaFor(x => x.FoodDescription, new { @class = "form-control" })
+    <span asp-validation-for="FoodDescription" class="text-danger"></span>
+    <br />
+    @Html.LabelFor(x => x.CategoryID, "Category")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vls, new { @class = "form-control" })
+    <span asp-validation-for="CategoryID" class="text-danger"></span>
+    <br />
+    @Html.LabelFor(x => x.FoodPrice, "Food Price")
+    @Html.TextBoxFor(x => x.FoodPrice, new { @class = "form-control" })
+    <span asp-validation-for="FoodPrice" class="text-danger"></span>
+    <br />
+    @Html.LabelFor(x => x.FoodStock, "Food Stock")
+    @Html.TextBoxFor(x => x.FoodStock, new { @class = "form-control" })
+    <span asp-validation-for="FoodStock" class="text-danger"></span>
+    <br />
+    @Html.LabelFor(x => x.FoodImage, "Food Image")
+    <input type="file" name="FoodImage" required="" />
+    @*<span asp-validation-for="FoodImage" class="text-danger"></span>*@
+    <br />
+    <button class="btn btn-success">Save</button>
+</form>
+

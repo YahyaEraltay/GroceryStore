@@ -1,0 +1,22 @@
+﻿@model GroceryProject.Models.Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Add Category</h2>
+<br />
+<form class="form-group" asp-action="AddCategory" asp-controller="Category" method="post" enctype="multipart/form-data" >
+    @Html.LabelFor(x => x.CategoryName, "Category Name")
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    <span asp-validation-for="CategoryName" class="text-danger"></span>
+    <br />
+    <br />
+    @Html.LabelFor(x => x.CategoryDescription, "Category Description")
+    @Html.TextBoxFor(x => x.CategoryDescription, new { @class = "form-control" })
+    <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+    <br />
+    <br />
+    <button class="btn btn-success">Save</button>
+</form>
+

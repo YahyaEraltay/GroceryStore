@@ -1,0 +1,43 @@
+﻿@model List<GroceryProject.Models.Category>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Categories</h2>
+<br />
+<table id="table1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Category Description</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.Where(x => x.CategoryStatus == true))
+        {
+            <tr>
+                <td>@x.CategoryID</td>
+                <td>@x.CategoryName</td>
+                <td>@x.CategoryDescription</td>
+                <td>
+                    <a href="/Category/GetCategory/@x.CategoryID" class="btn btn-warning">Update</a>
+                    @Html.ActionLink("Delete", "DeleteCategory", new { id = x.CategoryID }, new { @class = "btn btn-danger", onclick = "return confirm('Are You Sure?')" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script>
+    $('#table1').DataTable();
+</script>
+
+<br />
+<a href="/Category/AddCategory/" class="btn btn-primary">Add Category</a>
+

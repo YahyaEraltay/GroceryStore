@@ -1,0 +1,12 @@
+﻿@model IEnumerable<GroceryProject.Models.Category>
+
+<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+    <ul class="nav navbar-nav nav_1">
+        @foreach (var x in Model.Where(x => x.CategoryStatus == true))
+        {
+            <li><a href="/Site/CategoryDetails/@x.CategoryID">@x.CategoryName</a></li>
+        }
+
+    </ul>
+</div>
+
